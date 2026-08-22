@@ -19,7 +19,7 @@ Repositorio con los ejercicios prácticos y el proyecto final desarrollados dura
 | :---: | :--- | :--- | :---: |
 | **01** | **Estructura Básica** (`holamundo.html`) | Primeros pasos con HTML5 y etiquetas de encabezado. | [Ver Demo](https://ian-m-09.github.io/HTML-CSS-JS/Ejercicios-que-desarrolle/holamundo.html) |
 | **02** | **Lógica & Funciones** (`Ejercicios.js`) | Funciones declarativas y flecha, manejo de errores (`throw new Error`), `try/catch`, parámetros por defecto, template literals y módulo `readline`. | [Ver Código](https://github.com/Ian-M-09/HTML-CSS-JS/blob/main/Ejercicios-que-desarrolle/Ejercicios.js) |
-| **03** | **Proyecto Final: Portfolio** (`index.html`) | Maquetación responsiva completa con Flexbox, integración de hoja de estilos (`Porfolio.css`) y formulario interactivo con envío de correos vía EmailJS (`Porfolio.js`). | [🚀 Ver Demo en Vivo](https://ian-m-09.github.io/HTML-CSS-JS/Ejercicios-que-desarrolle/) |
+| **03** | **Proyecto Final: Portfolio** (`index.html`) | Maquetación responsiva completa con Flexbox, integración de hoja de estilos (`Porfolio.css`) y formulario interactivo con envío de correos vía EmailJS (`Porfolio.js`). | [🚀 Ver Demo en Vivo](https://ian-m-09.github.io/HTML-CSS-JS) |
 
 ---
 
