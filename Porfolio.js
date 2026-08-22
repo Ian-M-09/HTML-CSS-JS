@@ -75,3 +75,6 @@ function efectoEscribir() {
 // 6. Damos la orden de que arranque el efecto
 efectoEscribir();
 
+/*cosas a agergar:
+que las imagenes se puedan abrir, solo las de los cursos
+*/
