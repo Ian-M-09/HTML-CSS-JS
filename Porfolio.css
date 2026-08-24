@@ -40,15 +40,15 @@ body {
     display: flex; /* Activa el modelo de diseño flexbox */
     justify-content: center; /* Centra los elementos horizontalmente */
     align-items: center; /* Centra los elementos verticalmente */
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea si no caben */
-    gap: 10%; /* Espacio de 10% entre los elementos */
+    gap: 10px; /* Espacio de 10px entre los elementos */
 }
 
 /* Estilos para las imágenes dentro de la clase Cursos */
 .Cursos img{
     width: 100%; /* El ancho es el 100% de su contenedor */
     max-width: 320px; /* Pero no puede ser más ancho que 320px */
-    height: auto; /* La altura se ajusta automáticamente para mantener la proporción */
+    height: 220px; /* La altura se fija para que las imagenes midan lo mismo, sin importar su proporcion original*/
+    object-fit: cover;/*recorta la imagen sin que se deforme */
     border-radius: 8px; /* Redondea las esquinas 8 píxeles */
     border: 1px solid #ff00ff; /* Borde de 1 píxel sólido de color magenta */
 }
@@ -74,6 +74,11 @@ body {
     .texto-imagen{
         flex-direction: column; /* Cambia la dirección de los elementos a vertical */
         text-align: center; /* Alinea el texto al centro */
+    }
+    .Cursos{
+        flex-direction: column; /* Cambia la dirección de los elementos a vertical */
+        text-align: center; /* Alinea el texto al centro */
+        gap: 10px;
     }
 }
 
@@ -182,3 +187,89 @@ li{
     transform: translateY(-2px);/*se mueve 2px hacia arriba cuando pasa el cursos por arriba*/
 }
 
+/* Lightbox: fondo oscuro que cubre toda la pantalla */
+.lightbox {
+    display: none; /* hace que no se vea hasta que se interacute con el */
+    position: fixed; /* se queda fijo aunque hagas scroll */
+    top: 0;
+    left: 0;
+    width: 100%;/*hace que ocupe toda la pantalla*/
+    height: 100%;/*hace que ocupe toda la pantalla*/
+    background-color: rgba(0, 0, 0, 0.9); /* fondo negro semi-transparente */
+    z-index: 1000; /* por encima de todo lo demás */
+    justify-content: center; /* centra la imagen horizontalmente (con flex) */
+    align-items: center; /* centra la imagen verticalmente (con flex) */
+}
+
+/* Cuando tiene la clase "activo", se muestra usando flexbox para centrar */
+.lightbox.activo {/*cuando js le agrega la clase activo pasa esto*/
+    display: flex;
+}
+
+/* La imagen dentro del lightbox */
+.lightbox img {/*selecciona la imagen dentro del .lightbox*/
+    max-width: 90%; /* nunca más ancha que el 90% de la pantalla */
+    max-height: 85vh; /* nunca más alta que el 85% del alto visible */
+    border-radius: 8px;/*redondea las esquinas*/
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.4); /* brillo sutil magenta, en los bordes */
+}
+
+/* Botón de cerrar (la "X") */
+.lightbox-cerrar {
+    position: absolute;/*el boton se situa de tal forma que la imagen no lo tape*/
+    top: 20px;
+    right: 30px;
+    background: none;/*background: none; border: none;: quitan el fondo y borde por defecto que traen los <button> del navegador, para que se vea solo el símbolo "×".*/
+    border: none;
+    color: #ffffff;
+    font-size: 2.5rem;
+    cursor: pointer;/*cambia el cursor*/
+    line-height: 1;/*ajusta la X para que quede cetrada */
+    transition: color 0.2s ease;
+}
+
+.lightbox-cerrar:hover {
+    color: #ff00ff; /* magenta al pasar el mouse */
+}
+
+/* Hace que las imágenes de cursos muestren que son clickeables */
+.Cursos img {
+    cursor: pointer;
+    transition: transform 0.2s ease;/**/
+}
+
+.Cursos img:hover {/*pasa cando tengo el cursor arriba*/
+    transform: scale(1.03);/*hace un poco mas grande la imagen */
+}
+
+/* Hace que los saltos entre secciones (por los href="#algo") sean animados y suaves en vez de instantáneos */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Contenedor del menú de accesos rápidos */
+.menu-rapido {
+    display: flex; /* pone los 3 links uno al lado del otro */
+    justify-content: center; /* los centra horizontalmente */
+    flex-wrap: wrap; /* si no entran en una línea (pantallas chicas), pasan a la siguiente */
+    gap: 15px; /* espacio entre cada link */
+    margin: 20px 0; /* espacio arriba y abajo del menú completo */
+}
+
+/* Cada link del menú, estilizado como un botón */
+.menu-item {
+    padding: 10px 20px; /* espacio interno arriba/abajo e izquierda/derecha */
+    background-color: transparent; /* fondo transparente por defecto */
+    color: #00ffcc; /* color cian, igual que el resto de los acentos secundarios de la página */
+    border: 1px solid #00ffcc; /* borde del mismo color, para que se note el "botón" aunque el fondo sea transparente */
+    border-radius: 6px; /* esquinas redondeadas */
+    text-decoration: none; /* quita el subrayado de los links */
+    font-weight: bold;/*pone el texto en negrita*/
+    transition: background-color 0.2s ease, color 0.2s ease; /* anima el cambio de colores al pasar el mouse */
+}
+
+/* Efecto al pasar el mouse por encima de un link del menú */
+.menu-item:hover {
+    background-color: #00ffcc; /* se rellena con el color cian */
+    color: #0a0a0c; /* el texto pasa a oscuro para mantener contraste */
+}

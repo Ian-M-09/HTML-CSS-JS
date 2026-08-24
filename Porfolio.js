@@ -75,6 +75,44 @@ function efectoEscribir() {
 // 6. Damos la orden de que arranque el efecto
 efectoEscribir();
 
-/*cosas a agergar:
-que las imagenes se puedan abrir, solo las de los cursos
-*/
+// --- Lightbox: abrir certificados en grande ---
+
+// Selecciona el modal, la imagen dentro del modal y el botón de cerrar
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxCerrar = document.getElementById("lightbox-cerrar");
+
+// Selecciona SOLO las imágenes de la sección de cursos/certificados
+const imagenesCursos = document.querySelectorAll(".Cursos img");
+
+// A cada certificado le agrego el evento de clic para abrirlo en grande
+imagenesCursos.forEach(function (imagen) {
+    imagen.addEventListener("click", function () {
+        lightboxImg.src = imagen.src; // copia la imagen clickeada al modal
+        lightboxImg.alt = imagen.alt;// copia la descripcion de la imagen clickeada
+        lightbox.classList.add("activo"); // muestra el modal
+    });
+});
+
+// Función para cerrar el modal
+function cerrarLightbox() {
+    lightbox.classList.remove("activo");
+    lightboxImg.src = ""; // limpia la imagen (evita que siga cargada de fondo)
+}
+
+// Cerrar con el botón "X"
+lightboxCerrar.addEventListener("click", cerrarLightbox);
+
+// Cerrar haciendo clic en el fondo oscuro (fuera de la imagen)
+lightbox.addEventListener("click", function (evento) {
+    if (evento.target === lightbox) {/*se cierra si hago clic en el "div" que la contiene */
+        cerrarLightbox();
+    }
+});
+
+// Cerrar con la tecla Escape
+document.addEventListener("keydown", function (evento) {
+    if (evento.key === "Escape") {
+        cerrarLightbox();
+    }
+});

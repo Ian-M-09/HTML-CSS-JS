@@ -59,9 +59,16 @@
 
         <!-- Línea horizontal divisoria con clase para estilos -->
         <hr class="r">
-
+        <!-- Menú de accesos rápidos: enlaces internos que saltan a distintas secciones de la misma página -->
+        <nav class="menu-rapido">
+            <!-- Cada href="#algo" busca en la página el elemento que tenga id="algo" y salta ahí -->
+            <a href="#herramientas" class="menu-item">Herramientas</a>
+            <a href="#cursos" class="menu-item">Cursos</a>
+            <a href="#contacto" class="menu-item">Contacto</a>
+        </nav>
+        <hr class="r">
         <!-- Sección de lenguajes de programación -->
-        <div class="lenguajes">
+        <div class="lenguajes"id="herramientas">
             <!-- Encabezado de nivel 2 (menos importante que h1) -->
             <h2 class="h">
                 Herramientas y Lenguajes de Programación
@@ -142,7 +149,7 @@
                     </ul>
                 </li>
             </ol>
-
+            <hr class="r">
             <!-- Encabezado para la siguiente sección -->
             <h2 class="h">Currently Exploring / Roadmap Técnico</h2>
             
@@ -164,12 +171,11 @@
                 <!-- Elemento: objetivo -->
                 <li><strong>Objetivo a mediano plazo:</strong> Consolidarme como Full Stack Developer, unificando el desarrollo de frontend moderno con backends escalables, seguros y conectados a bases de datos robustas.</li>
             </ul>
-
+            <hr class="r">
             <!-- Encabezado para sección de cursos completados -->
             <h2 class="titulo">Cursos hechos</h2>
-            
             <!-- Contenedor para las imágenes de certificados -->
-            <div class="Cursos">
+            <div id="cursos"class="Cursos">
                 <!-- Primera imagen de certificado desde URL externa -->
                 <img src="https://i.postimg.cc/j2NXDf7C/IMG-20260315-134803.jpg" alt="Certificado 1">
                 <!-- Segunda imagen de certificado desde URL externa -->
@@ -195,7 +201,7 @@
         </div>
         <!-- Línea horizontal divisoria -->
         <hr class="r">
-        <div class="seccion-contacto">
+        <div id="contacto" class="seccion-contacto">
             <h2 class="h">Mi contacto:</h2>
             <form id="form-contacto" class="formulario-contacto"><!--from define un formulario en donde el usuario puede interactuar-->
                 <!--id="form-contacto" sirve para identificar al formulario cuando lo llame js-->
@@ -221,6 +227,18 @@
             - rel="noopener": evita que la página destino acceda a la página de origen (seguridad)
             - rel="noreferrer": no envía información del referrer a la página destino (privacidad)
         -->
+            <!-- Modal/Lightbox para ver los certificados en grande -->
+        <div id="lightbox" class="lightbox"><!--creo un fondo donde se va a ver la imagen-->
+            <button id="lightbox-cerrar" class="lightbox-cerrar" aria-label="Cerrar">&times;</button><!--creo un boton para poder interactuar con la imagen &times dibuja una X-->
+            <!--id="lightbox-cerrar": para que JS lo pueda seleccionar y escuchar el clic.
+            class="lightbox-cerrar": para darle estilos en el CSS (posición, tamaño, color).
+            aria-label="Cerrar": texto que leen los lectores de pantalla (para personas con discapacidad visual), ya que el botón no tiene texto visible, solo el símbolo "×"-->
+            <img id="lightbox-img" src="" alt="Certificado ampliado">
+            <!--<img>: la imagen que se va a mostrar en grande dentro del modal.
+            id="lightbox-img": para que JS pueda cambiar su src dinámicamente (le va a "copiar" la imagen que el usuario clickeó).
+            src="": arranca vacía a propósito. No quiero que cargue ninguna imagen hasta que el usuario haga clic en un certificado.
+            alt="Certificado ampliado": texto alternativo por defecto; JS lo va a sobrescribir con el alt de la imagen original cuando se abra.-->
+        </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="Porfolio.js"></script>
